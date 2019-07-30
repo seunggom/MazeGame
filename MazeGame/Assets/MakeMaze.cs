@@ -23,7 +23,7 @@ public class MakeMaze : MonoBehaviour
 
     public Room[ , ] maze;
 
-    Stack<Room> roomStack = new Stack<Room>();
+    Stack<int>[] roomStack = new Stack<int>[2];
 
     // Start is called before the first frame update
     void Start()
@@ -57,16 +57,19 @@ public class MakeMaze : MonoBehaviour
         int x = 0;
         int y = 0;
         maze[x, y].room_info = RoomInfo.potential; // (0,0)은 미로 생성의 첫 시작점
-        roomStack.Push(maze[x, y]);
+        roomStack[0].Push(x);
+        roomStack[1].Push(y);
 
         int a, b, dir;
-        while(roomStack.Count > 0)
+        int opportunity = 1;
+        //bool canGo = false; // 갈 수 있는 방향이 있는지 알려주는 변수
+        while (roomStack[0].Count > 0)
         {
-            do
+            a = x;
+            b = y;
+            dir = Random.Range(0, 4);
+            while (opportunity <= 4)
             {
-                a = x;
-                b = y;
-                dir = Random.Range(0, 4);
                 switch (dir)
                 {
                     case 0:
@@ -82,9 +85,35 @@ public class MakeMaze : MonoBehaviour
                         // 우
                         b++; break;
                 }
-            } while (a < 0 || a >= X_mazeSize || b < 0 || b >= Y_mazeSize);
+                if (a >= 0 && a < X_mazeSize && b >= 0 && b < Y_mazeSize) // 미로 영역을 벗어나지 않는 경우
+                {
+                    if (maze[a, b].room_info == RoomInfo.pure)
+                    {
+                       
+                        break;
+                    }
+                    else if (maze[a, b].room_info == RoomInfo.potential)
+                    {
+                       if (opportunity == 4) // 이 경우는 주변이 다 potential(1)이라는 의미임
+                        {
+                            maze[a, b].room_info = RoomInfo.end;
+                            roomStack[0].Pop();
+                            roomStack[1].Pop();
+                        }
+                    
+                    }
+                }
+                else
+                {
+                    dir++;
+                    if (dir == 4) dir = 0;
+                    opportunity++;
+                    // 랜덤으로 정해진 방향으로 가지 못하는 경우 다른 방향으로 갈 수 있는지 시도함.
+                }
+            }
 
-            switch(dir)
+
+            switch (dir)
             {
                 case 0:
                     // 상
@@ -108,11 +137,16 @@ public class MakeMaze : MonoBehaviour
                     break;
             }
 
+            roomStack[0].Push(a);
+            roomStack[1].Push(b);
+            x = a;
+            y = b;
 
 
 
 
-        }
+
+        } // 미로 구현 끝
     }
 
 
