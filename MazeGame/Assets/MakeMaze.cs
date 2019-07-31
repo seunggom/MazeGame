@@ -18,12 +18,13 @@ public enum RoomInfo
 
 public class MakeMaze : MonoBehaviour
 {
-    public int X_mazeSize = 3;
-    public int Y_mazeSize = 7;
+    int X_mazeSize = 2;
+    int Y_mazeSize = 3;
 
     public Room[ , ] maze;
 
-    Stack<int>[] roomStack = new Stack<int>[2];
+    Stack<int> roomStack0 = new Stack<int>();
+    Stack<int> roomStack1 = new Stack<int>();
 
     // Start is called before the first frame update
     void Start()
@@ -65,14 +66,14 @@ public class MakeMaze : MonoBehaviour
         int x = 1;
         int y = 1;
         maze[x, y].room_info = RoomInfo.potential; // (0,0)은 미로 생성의 첫 시작점
-        roomStack[0].Push(x);
-        roomStack[1].Push(y);
+        roomStack0.Push(x);
+        roomStack1.Push(y);
 
        
         int a, b, dir, final_dir;
         
        
-        while (roomStack[0].Count > 0)
+        while (roomStack0.Count > 0)
         {
             int opportunity = 1;
 
@@ -82,6 +83,8 @@ public class MakeMaze : MonoBehaviour
             
             while (opportunity <= 4)
             {
+                a = x;
+                b = y;
                 switch (dir)
                 {
                     case 0:
@@ -125,8 +128,9 @@ public class MakeMaze : MonoBehaviour
                             break;
                     }
 
-                    roomStack[0].Push(a);
-                    roomStack[1].Push(b);
+                    roomStack0.Push(a);
+                    roomStack1.Push(b);
+                    maze[a, b].room_info = RoomInfo.potential;
                     x = a;
                     y = b;
                     break;
@@ -139,8 +143,10 @@ public class MakeMaze : MonoBehaviour
 
                 if (opportunity == 5)
                 {
-                    roomStack[0].Pop();
-                    roomStack[1].Pop();
+                    x = roomStack0.Pop();
+                    y = roomStack1.Pop();
+                    maze[x, y].room_info = RoomInfo.end;
+
                 }
             }
             
