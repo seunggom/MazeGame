@@ -18,8 +18,8 @@ public enum RoomInfo
 
 public class MakeMaze : MonoBehaviour
 {
-    int X_mazeSize = 2;
-    int Y_mazeSize = 3;
+    public int X_mazeSize = 6;
+    public int Y_mazeSize = 8;
 
     public Room[ , ] maze;
 
@@ -146,102 +146,20 @@ public class MakeMaze : MonoBehaviour
                     x = roomStack0.Pop();
                     y = roomStack1.Pop();
                     maze[x, y].room_info = RoomInfo.end;
+                    if (roomStack0.Count != 0)
+                    {
+                        x = roomStack0.Pop();
+                        y = roomStack1.Pop();
+                        roomStack0.Push(x);
+                        roomStack1.Push(y);
+                    }
 
                 }
             }
             
         } // 스택 비었음
 
-        /*
-        int opportunity = 1;
-        //bool canGo = false; // 갈 수 있는 방향이 있는지 알려주는 변수
-        while (roomStack[0].Count > 0)
-        {
-            a = x;
-            b = y;
-            dir = Random.Range(0, 4);
-
-
-            while (opportunity <= 4)
-            {
-                switch (dir)
-                {
-                    case 0:
-                        // 상
-                        a--; break;
-                    case 1:
-                        // 하
-                        a++; break;
-                    case 2:
-                        // 좌
-                        b--; break;
-                    case 3:
-                        // 우
-                        b++; break;
-                }
-                if (a >= 0 && a < X_mazeSize && b >= 0 && b < Y_mazeSize) // 미로 영역을 벗어나지 않는 경우
-                {
-                    if (maze[a, b].room_info == RoomInfo.pure)
-                    {
-                       
-                        break;
-                    }
-                    else if (maze[a, b].room_info == RoomInfo.potential)
-                    {
-                       if (opportunity == 4) // 이 경우는 주변이 다 potential(1)이라는 의미임
-                        {
-                            maze[a, b].room_info = RoomInfo.end;
-                            roomStack[0].Pop();
-                            roomStack[1].Pop();
-                        }
-                    
-                    }
-                }
-                else
-                {
-                    dir++;
-                    if (dir == 4) dir = 0;
-                    opportunity++;
-                    // 랜덤으로 정해진 방향으로 가지 못하는 경우 다른 방향으로 갈 수 있는지 시도함.
-                }
-            }
-
-
-            switch (dir)
-            {
-                case 0:
-                    // 상
-                    maze[x, y].wall[0] = false;
-                    maze[a, b].wall[1] = false;
-                    break;
-                case 1:
-                    // 하
-                    maze[x, y].wall[1] = false;
-                    maze[a, b].wall[0] = false;
-                    break;
-                case 2:
-                    // 좌
-                    maze[x, y].wall[2] = false;
-                    maze[a, b].wall[3] = false;
-                    break;
-                case 3:
-                    // 우
-                    maze[x, y].wall[3] = false;
-                    maze[a, b].wall[2] = false;
-                    break;
-            }
-
-            roomStack[0].Push(a);
-            roomStack[1].Push(b);
-            x = a;
-            y = b;
-
-
-
-
-
-        } // 미로 구현 끝
-        */
+        
     }
 
 
