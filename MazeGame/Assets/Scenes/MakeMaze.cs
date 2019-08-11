@@ -188,18 +188,26 @@ public class MakeMaze : MonoBehaviour
     }
     void space()
     {
-        for(int i=0;i< X_mazeSize + 2; i++)
+        for(int i=1;i< X_mazeSize + 2; i++)
         {
-            for(int j=0;j< Y_mazeSize + 2; j++)
+            for(int j=0;j< Y_mazeSize + 1; j++)
             {
-                if (maze[i, j].wall[0] == true)
+              
+                if (j != 0)
                 {
-                    Instantiate(obj1, new Vector3(i, 0.5f, 0.5f+j), Quaternion.identity);
+                    if (maze[i, j].wall[0] == true)
+                    {
+                        Instantiate(obj1, new Vector3(i, 0.5f, 0.5f + j), Quaternion.identity);
+                    }
                 }
-                if (maze[i, j].wall[3] == true)
+                if (i != X_mazeSize+1)
                 {
-                    Instantiate(obj2, new Vector3(0.5f+i, 0.5f, 1+j), Quaternion.identity);
+                    if (maze[i, j].wall[3] == true)
+                    {
+                        Instantiate(obj2, new Vector3(0.5f + i, 0.5f, 1 + j), Quaternion.identity);
+                    }
                 }
+                
             }
         }
         
