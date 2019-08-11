@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2294054, g: 0.25158417, b: 0.32941222, a: 1}
+  m_IndirectSpecularColor: {r: 0.22933483, g: 0.2515444, b: 0.3294993, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -132,9 +132,8 @@ GameObject:
   - component: {fileID: 560745382}
   - component: {fileID: 560745381}
   - component: {fileID: 560745380}
-  - component: {fileID: 560745384}
   - component: {fileID: 560745385}
-  - component: {fileID: 560745386}
+  - component: {fileID: 560745384}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -244,19 +243,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 7615360935528836706, guid: c4df996f8968ce740a5f95cda4030152, type: 3}
---- !u!114 &560745386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 560745379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a59f2a0806080294091113d8b29b1eed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +316,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -3.7622156e-34, z: 6.54e-43, w: -3.8216478e-34}
+  m_BoundingSphereOverride: {x: 0, y: -0.000010581942, z: 4.76e-43, w: -0.000010455835}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
