@@ -20,8 +20,8 @@ public class MakeMaze : MonoBehaviour
 {
     public GameObject obj1; //ZCube
     public GameObject obj2; //XCube
-    public int X_mazeSize = 6;
-    public int Y_mazeSize = 8;
+    public static int X_mazeSize = 6;
+    public static int Y_mazeSize = 8;
    
 
     public Room[ , ] maze;
