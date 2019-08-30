@@ -23,7 +23,7 @@ public class MakeMaze : MonoBehaviour
     public static int X_mazeSize = GetMazeSize.X_Size;
     public static int Y_mazeSize = GetMazeSize.Y_Size;
 
-
+    private short[] password = new short[4]; // 탈출을 위한 비밀 번호 4자리
 
     public Room[ , ] maze;
 
@@ -36,6 +36,7 @@ public class MakeMaze : MonoBehaviour
         DesignMaze();
         PrintMaze();
         space();
+        password = MakePW();
     }
 
     // Update is called once per frame
@@ -153,6 +154,7 @@ public class MakeMaze : MonoBehaviour
                     maze[x, y].room_info = RoomInfo.end;
                     if (roomStack0.Count != 0)
                     {
+                        // 스택의 가장 위에 있는 값을 얻고 싶은데 top() 함수가 없어서 아래와 같이 했음
                         x = roomStack0.Pop();
                         y = roomStack1.Pop();
                         roomStack0.Push(x);
@@ -163,8 +165,6 @@ public class MakeMaze : MonoBehaviour
             }
             
         } // 스택 비었음
-
-        
     }
 
 
@@ -187,8 +187,14 @@ public class MakeMaze : MonoBehaviour
             print(s);
         }
     }
+
     void space()
     {
+        /*
+         * Author : 김대경
+         * Description: 프리팹을 이용하여 벽을 생성하는 함수
+         * */
+
         for(int i=1;i< X_mazeSize + 2; i++)
         {
             for(int j=0;j< Y_mazeSize + 1; j++)
@@ -211,8 +217,15 @@ public class MakeMaze : MonoBehaviour
                 
             }
         }
-        
     }
+
+    short[] MakePW()
+    {
+        short[] pw = new short[4];
+
+        return pw;
+    }
+
 }
 
 
