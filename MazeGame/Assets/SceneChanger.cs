@@ -27,7 +27,7 @@ public class SceneChanger : MonoBehaviour
        
         else if (b.name == "Exit")
         {
-            Application.Quit();
+            SceneManager.LoadScene("StartScene");
         }
     }
 }
