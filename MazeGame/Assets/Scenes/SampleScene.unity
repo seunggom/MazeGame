@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 115133213}
   - component: {fileID: 115133212}
   - component: {fileID: 115133214}
+  - component: {fileID: 115133215}
   m_Layer: 0
   m_Name: Maze
   m_TagString: Untagged
@@ -179,6 +180,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapCam: {fileID: 2186747793415037728, guid: 2b52f01d6474d214a864da0d2187a1b2, type: 3}
+--- !u!114 &115133215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115133211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecf5aba4624342846b562bd0e1dfc2ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capsule: {fileID: 8716886510762351724, guid: b9c9b31a9056b744084c33a543fac660, type: 3}
+  mats:
+  - {fileID: 2100000, guid: 66a7c02771996314fa76c0a7b5517178, type: 2}
+  - {fileID: 2100000, guid: 335c94934a2190c42bcf297a85552954, type: 2}
+  - {fileID: 2100000, guid: 6078b88d37ac21d46baee56aa02718a5, type: 2}
+  - {fileID: 2100000, guid: 0cab1e61fed30584781a4afe8f0bf4dc, type: 2}
+  - {fileID: 2100000, guid: b831b079d33ceda44bcaf5ff32b149f6, type: 2}
+  - {fileID: 2100000, guid: 8eef03aaaf7c89c469d1ade6e00c9466, type: 2}
+  - {fileID: 2100000, guid: bee391e8f9edd3947893e8f8c5ffbe45, type: 2}
+  - {fileID: 2100000, guid: 396c83fd2726bd14dada730353ab84f1, type: 2}
+  - {fileID: 2100000, guid: aa5b4b310672090409ba3b2250bc8543, type: 2}
+  - {fileID: 2100000, guid: 1f907da9542f9a3438c9fdfe356dbe93, type: 2}
 --- !u!1 &205242141
 GameObject:
   m_ObjectHideFlags: 0
