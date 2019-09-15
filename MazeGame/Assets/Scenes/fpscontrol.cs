@@ -43,8 +43,8 @@ public class fpscontrol : MonoBehaviour
 
     void RotCtrl()
     { //마우스 회전 시점이동 함수
-        float rotX = Input.GetAxis("Mouse Y") * rotSpeed * Time.deltaTime*100;
-        float rotY = Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime*100;
+        float rotX = Input.GetAxis("Mouse Y") * rotSpeed;
+        float rotY = Input.GetAxis("Mouse X") * rotSpeed;
 
         this.transform.localRotation *= Quaternion.Euler(0, rotY, 0);
         fpsCam.transform.localRotation *= Quaternion.Euler(-rotX, 0, 0);
