@@ -57,12 +57,35 @@ public class HintCapsule : MonoBehaviour
          * Description: 탈출 비밀번호의 숫자 한개를 알려주는 캡슐을 총 4개 생성하는 함수
          * */
         int n = X_mazeSize / 10;
-        
 
+        short[] shake_pw = new short[4];
+        for(int i=0; i<4; i++)
+        {
+            shake_pw[i] = password[i];
+        }
+
+        bool[] used = new bool[4] { false, false, false, false };
+        
+        
         for (int i = 0; i < 4; i++)
         {
+            int index = Random.Range(0, 4);
+            while(used[index] == true) index = Random.Range(0, 4);
+            used[index] = true;
             GameObject cap = Instantiate(capsule, new Vector3(0.5f + (3.0f * n) + 2 * i, 0.25f, 0.5f + Random.Range(Y_mazeSize / 2, Y_mazeSize)), Quaternion.identity);
-            cap.GetComponent<Renderer>().material = mats[password[i]];
+            cap.name = "capsule" + i;
+            cap.GetComponent<Renderer>().material = mats[password[index]];
+            print(password[index]);
         }
+    }
+
+    void deleteCapsule()
+    {
+        /*
+         * Author : 김승연
+         * Description: Player가 캡슐에 가까이 다가가면 캡슐 사라지고 화면에 획득한 캡슐 번호 뜨게 함
+         * */
+
+
     }
 }

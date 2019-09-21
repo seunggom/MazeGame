@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8716886510762351712}
   - component: {fileID: 8716886510762351713}
   - component: {fileID: 8716886510762351726}
-  - component: {fileID: 8716886510762351727}
+  - component: {fileID: 4058107712095455996}
   m_Layer: 0
   m_Name: HintCapsule
   m_TagString: Untagged
@@ -79,7 +79,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &8716886510762351727
+--- !u!136 &4058107712095455996
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,9 +87,9 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8716886510762351724}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.81383944
+  m_Height: 2.6042862
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.017979145, y: 0, z: 0}
