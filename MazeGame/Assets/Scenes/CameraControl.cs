@@ -15,8 +15,8 @@ public class CameraControl : MonoBehaviour
         X_mapSize = MakeMaze.X_mazeSize;
         Y_mapSize = MakeMaze.Y_mazeSize;
         cam = GameObject.Instantiate(mapCam);
-        cam.transform.position = new Vector3(X_mapSize / 2, 10, Y_mapSize / 2);
-        cam.transform.rotation = Quaternion.Euler(90.0f, 0.0f, 0.0f);
+
+        
         cam.enabled = false;
     }
 
@@ -25,6 +25,10 @@ public class CameraControl : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.M))
         {
+            Vector3 player_pos = GameObject.Find("Player(Clone)").transform.position;
+
+            cam.transform.position = new Vector3(player_pos.x, 1.5f, player_pos.z);
+            cam.transform.rotation = Quaternion.Euler(90.0f, 0.0f, 0.0f);
             cam.enabled = true;
         }
         if(Input.GetKeyUp(KeyCode.M))

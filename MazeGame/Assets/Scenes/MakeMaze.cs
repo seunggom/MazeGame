@@ -33,6 +33,7 @@ public class MakeMaze : MonoBehaviour
     {
         DesignMaze();
         PrintMaze();
+        ExtendBottomPlane();
         space();
         
     }
@@ -217,7 +218,18 @@ public class MakeMaze : MonoBehaviour
         }
     }
 
-   
+   void ExtendBottomPlane()
+    {
+        /*
+         * Author : 김승연
+         * Description: 미로 크기에 따라 미로를 받치고 있는 Plane의 크기를 조절하는 함수
+         * */
+
+        GameObject plane = GameObject.Find("Plane");
+        plane.transform.position = new Vector3(X_mazeSize / 2, 0.0f, Y_mazeSize / 2);
+        plane.transform.localScale = new Vector3(2, 1.2f, 2);
+
+    }
 
 }
 
