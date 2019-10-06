@@ -19,7 +19,7 @@ public class Monster : MonoBehaviour
     {
         
     }
-    void Mob()
+    public void Mob()
     {
         
             Instantiate(mob, new Vector3(0.5f + Random.Range(X_mazeSize / 2, X_mazeSize), 0.5f, 0.5f + Random.Range(Y_mazeSize / 2, Y_mazeSize)), Quaternion.identity);

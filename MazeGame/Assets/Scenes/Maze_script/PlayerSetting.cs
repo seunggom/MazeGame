@@ -8,7 +8,7 @@ public class PlayerSetting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(Player, new Vector3(1.5f, 0.1f, 1.5f), Quaternion.identity);
+        Instantiate(Player, new Vector3(1.5f, 0.5f, 1.5f), Quaternion.identity);
     }
 
     // Update is called once per frame
