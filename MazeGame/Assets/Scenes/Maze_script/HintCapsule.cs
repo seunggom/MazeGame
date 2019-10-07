@@ -6,7 +6,7 @@ public class HintCapsule : MonoBehaviour
 {
     public static int X_mazeSize = GetMazeSize.X_Size;
     public static int Y_mazeSize = GetMazeSize.Y_Size;
-    private short[] password = new short[4]; // 탈출을 위한 비밀 번호 4자리
+    public static int[] password = new int[4]; // 탈출을 위한 비밀 번호 4자리      ++short로 선언된거 int로 다 바꿨고 static으로 선언시킴(비밀번호 확인하는 스크립트에서 쓰려고)
     public GameObject capsule;
     public Material[] mats = new Material[10];
 
@@ -27,22 +27,22 @@ public class HintCapsule : MonoBehaviour
         
     }
 
-    short[] MakePassword()
+    int[] MakePassword()
     {
         /*
          * Author : 김승연
          * Description: 탈출 비밀번호를 만들기 위한 함수. 각 네자리는 중복될 수 없음.
          * */
-        short[] pw = new short[4] { -1, -1, -1, -1 };
+        int[] pw = new int[4] { -1, -1, -1, -1 };
 
         for (int i = 0; i < 4; i++)
         {
-            pw[i] = (short)Random.Range(0, 10);
+            pw[i] = (int)Random.Range(0, 10);
             for (int j = 0; j < i; j++)
             {
                 while (pw[j] == pw[i])
                 {
-                    pw[i] = (short)Random.Range(0, 10);
+                    pw[i] = (int)Random.Range(0, 10);
                 }
             }
         }
@@ -58,7 +58,7 @@ public class HintCapsule : MonoBehaviour
          * */
         int n = X_mazeSize / 10;
 
-        short[] shake_pw = new short[4];
+        int[] shake_pw = new int[4];
         for(int i=0; i<4; i++)
         {
             shake_pw[i] = password[i];
