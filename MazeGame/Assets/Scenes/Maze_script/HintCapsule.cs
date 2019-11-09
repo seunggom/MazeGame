@@ -8,10 +8,7 @@ public class HintCapsule : MonoBehaviour
     public static int Y_mazeSize = GetMazeSize.Y_Size;
     public static int[] password = new int[4]; // 탈출을 위한 비밀 번호 4자리      ++short로 선언된거 int로 다 바꿨고 static으로 선언시킴(비밀번호 확인하는 스크립트에서 쓰려고)
     public GameObject capsule;
-    private GameObject[] _capsuleObj;
     public Material[] mats = new Material[10];
-    private bool[] takeHint = new bool[4];
-    private GameObject[] UI_HintImage = new GameObject[4];
 
     // Start is called before the first frame update
     void Start()
@@ -21,15 +18,13 @@ public class HintCapsule : MonoBehaviour
         print(password[1]);
         print(password[2]);
         print(password[3]);
-        _capsuleObj = new GameObject[4];
         CreateHintCapsule();
-        SettingStartHintUI();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!takeHint[0] || !takeHint[1] || !takeHint[2] || !takeHint[3]) deleteCapsule(_capsuleObj);
+        
     }
 
     int[] MakePassword()
@@ -77,52 +72,20 @@ public class HintCapsule : MonoBehaviour
             int index = Random.Range(0, 4);
             while(used[index] == true) index = Random.Range(0, 4);
             used[index] = true;
-            _capsuleObj[i] = Instantiate(capsule, new Vector3(0.5f + (3.0f * n) + 2 * i, 0.25f, 0.5f + Random.Range(Y_mazeSize / 2, Y_mazeSize)), Quaternion.identity);
-            _capsuleObj[i].name = "capsule" + i;
-            _capsuleObj[i].GetComponent<Renderer>().material = mats[password[index]];
-            takeHint[i] = false;
+            GameObject cap = Instantiate(capsule, new Vector3(0.5f + (3.0f * n) + 2 * i, 0.25f, 0.5f + Random.Range(Y_mazeSize / 2, Y_mazeSize)), Quaternion.identity);
+            cap.name = "capsule" + i;
+            cap.GetComponent<Renderer>().material = mats[password[index]];
+            print(password[index]);
         }
     }
 
-    void deleteCapsule(GameObject[] capsule)
+    void deleteCapsule()
     {
         /*
          * Author : 김승연
          * Description: Player가 캡슐에 가까이 다가가면 캡슐 사라지고 화면에 획득한 캡슐 번호 뜨게 함
          * */
-        Vector3 _capsulePos;
-        GameObject player = GameObject.Find("Player(Clone)");
 
-        for(int i = 0; i < 4; i++) {
-            if(takeHint[i]) continue;
-            _capsulePos = capsule[i].transform.position;
-            if(Vector3.Distance(_capsulePos, player.transform.position) < 0.5f) {
-                Destroy(_capsuleObj[i]);
-                takeHint[i] = true;
 
-            }
-        }
-    }
-
-    void SettingStartHintUI() {
-        /*
-        Author : 김승연
-        Description : 처음에 UICanvas에 RawImage들을 안보이게 설정해놓음
-        */
-
-        for(int i = 0; i < 4; i++) {
-            string name = "HintImage" + i;
-            UI_HintImage[i] = GameObject.Find(name);
-            UI_HintImage[i].SetActive(false);
-        }
-    }
-
-    void SettingUIWhenTakeHint(GameObject hintObj) {
-        /*
-        Author : 김승연
-        Description : 힌트 얻었으면 UICanvas에 띄움
-        */
-
-        
     }
 }
